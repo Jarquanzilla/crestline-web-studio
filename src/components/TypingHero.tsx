@@ -1,70 +1,102 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
-
-const PHRASES = ['that don\'t have one.', 'that look ten years old.', 'that lose to AI.'];
+import { DecodeText } from './DecodeText';
+import { RisingLine } from './RisingLine';
+import { ScreenPanel } from './ScreenPanel';
+import { ParticleField } from './ParticleField';
+import { SITE } from '../siteConfig';
 
 export const TypingHero: React.FC = () => {
-  const [phraseIndex, setPhraseIndex] = useState(0);
-  const [text, setText] = useState('');
-  const [deleting, setDeleting] = useState(false);
+  const [decoded, setDecoded] = useState(false);
 
-  useEffect(() => {
-    const current = PHRASES[phraseIndex];
-    const speed = deleting ? 35 : 55;
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-    const timeout = setTimeout(() => {
-      if (!deleting) {
-        if (text.length < current.length) {
-          setText(current.slice(0, text.length + 1));
-        } else {
-          setTimeout(() => setDeleting(true), 1400);
-        }
-      } else {
-        if (text.length > 0) {
-          setText(current.slice(0, text.length - 1));
-        } else {
-          setDeleting(false);
-          setPhraseIndex((i) => (i + 1) % PHRASES.length);
-        }
-      }
-    }, speed);
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mouseX.set((e.clientX - rect.left) / rect.width - 0.5);
+    mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
 
-    return () => clearTimeout(timeout);
-  }, [text, deleting, phraseIndex]);
+  // Parallax multipliers scale with each panel's apparent distance —
+  // larger/closer panels shift more, the deep backdrop word barely moves.
+  const bgTextX = useTransform(mouseX, [-0.5, 0.5], [8, -8]);
+  const bgTextY = useTransform(mouseY, [-0.5, 0.5], [6, -6]);
+  const panel1X = useTransform(mouseX, [-0.5, 0.5], [26, -26]);
+  const panel2X = useTransform(mouseX, [-0.5, 0.5], [18, -18]);
+  const panel3X = useTransform(mouseX, [-0.5, 0.5], [12, -12]);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center px-6 md:px-10 grid-lines overflow-hidden">
+    <section
+      onMouseMove={handleMouseMove}
+      className="relative min-h-screen flex flex-col px-6 md:px-10 pt-36 md:pt-44 pb-24 grid-lines overflow-hidden"
+    >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink pointer-events-none" />
+      <ParticleField count={22} />
+
+      {/* Deep background layer — faint oversized wordmark for depth-of-field */}
+      <motion.div
+        style={{ x: bgTextX, y: bgTextY }}
+        className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0"
+      >
+        <span className="text-huge text-white/[0.035] text-[13rem] md:text-[20rem] whitespace-nowrap blur-[1px]">
+          HANDLED
+        </span>
+      </motion.div>
+
+      {/* Ambient floating screens — desktop only, purely atmospheric */}
+      <ScreenPanel className="hidden lg:block w-64 h-40 right-12 top-40" delay={0.2} parallaxX={panel1X} />
+      <ScreenPanel className="hidden lg:block w-48 h-32 right-40 top-72" delay={0.5} tiltX={-4} tiltY={10} parallaxX={panel2X} />
+      <ScreenPanel className="hidden xl:block w-40 h-28 right-[28rem] top-52" delay={0.8} tiltX={8} tiltY={-18} parallaxX={panel3X} />
 
       <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative max-w-5xl"
+        initial={{ opacity: 0, y: 20, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 max-w-5xl"
       >
-        <p className="text-label text-white/40 mb-6">Crestline Web Studio — Tulsa, OK</p>
-        <h1 className="text-huge text-6xl md:text-[7.5rem] tracking-tight">
-          Websites for
+        <p className="text-label text-cyan-300/50 mb-6 text-mono">
+          <DecodeText text={`${SITE.shortName} // ${SITE.city.toUpperCase()}`} />
+        </p>
+        <h1 className="text-huge text-6xl md:text-[7.5rem] tracking-tight text-white glow-white">
+          <DecodeText text="We build it." frames={14} />
           <br />
-          businesses
+          <DecodeText text="We host it." delayMs={300} frames={14} />
           <br />
-          <span className="text-white/50">{text}</span>
-          <span className="caret">|</span>
+          <span className={`block min-h-[1.15em] glow-cyan ${decoded ? 'shimmer-sweep' : 'text-cyan-300/80'}`}>
+            <DecodeText
+              text="You do nothing."
+              delayMs={650}
+              frames={26}
+              onComplete={() => setDecoded(true)}
+            />
+          </span>
         </h1>
-        <p className="text-editorial text-2xl md:text-3xl text-white/60 mt-8 max-w-xl">
-          Built fast, priced clearly, live in days — not months.
+        <p className="text-white/50 mt-8 max-w-xl text-mono text-sm">
+          Custom-coded sites. Domain and hosting fully managed. One flat price — then it's off your plate for good.
         </p>
         <div className="flex flex-wrap items-center gap-6 mt-10">
           <Link
             to="/work"
-            className="text-label border border-white/30 px-6 py-3 hover:bg-white hover:text-ink transition-colors"
+            className="text-label border border-cyan-400/40 px-6 py-3 text-cyan-200 hover:bg-cyan-400/10 hover:border-cyan-300 hover:scale-105 transition-all"
           >
             See the work
           </Link>
-          <Link to="/contact" className="text-label text-white/60 hover:text-white transition-colors">
+          <Link
+            to="/contact"
+            className="text-label text-white/60 hover:text-white underline-offset-4 hover:underline transition-colors"
+          >
             Book a call →
           </Link>
+        </div>
+
+        <div className="mt-16 flex items-center gap-4 max-w-xs">
+          <RisingLine className="w-40 h-16" delay={1.4} />
+          <p className="text-mono text-[0.65rem] text-white/30 leading-tight">
+            UPTIME<br />
+            <span className="text-cyan-300/60">always on</span>
+          </p>
         </div>
       </motion.div>
 
@@ -72,7 +104,7 @@ export const TypingHero: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="absolute bottom-10 left-6 md:left-10 text-label text-white/30"
+        className="absolute bottom-10 left-6 md:left-10 text-label text-white/30 text-mono z-10"
       >
         Scroll
       </motion.div>

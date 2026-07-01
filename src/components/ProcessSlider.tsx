@@ -11,26 +11,33 @@ const STEPS = [
 export const ProcessSlider: React.FC = () => {
   return (
     <section className="py-32 px-6 md:px-10 border-t border-line">
-      <div className="flex items-baseline justify-between mb-12">
-        <h2 className="text-huge text-4xl md:text-6xl">Process</h2>
-        <p className="text-label text-white/40 hidden md:block">Drag to explore →</p>
-      </div>
+      <h2 className="text-huge text-4xl md:text-6xl mb-16">Process</h2>
 
-      <div className="flex gap-6 overflow-x-auto no-scrollbar pb-4 -mx-6 px-6 md:-mx-10 md:px-10">
-        {STEPS.map((step, i) => (
-          <motion.div
-            key={step.n}
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.08 }}
-            className="min-w-[280px] md:min-w-[340px] shrink-0 border border-line p-8 bg-charcoal"
-          >
-            <span className="text-label text-white/30">{step.n}</span>
-            <h3 className="text-huge text-3xl mt-4 mb-3">{step.title}</h3>
-            <p className="text-white/50 leading-relaxed">{step.body}</p>
-          </motion.div>
-        ))}
+      <div className="relative max-w-2xl">
+        <div className="absolute left-[1.6rem] top-2 bottom-2 w-px bg-line-strong" />
+
+        <div className="flex flex-col gap-10">
+          {STEPS.map((step, i) => (
+            <motion.div
+              key={step.n}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="group relative flex gap-8 pl-0"
+            >
+              <div className="relative z-10 shrink-0 w-[3.2rem] h-[3.2rem] rounded-full border border-line-strong bg-charcoal flex items-center justify-center text-mono text-sm text-white/40 group-hover:text-cyan-300 group-hover:border-cyan-400/50 group-hover:scale-110 transition-all">
+                {step.n}
+              </div>
+              <div className="pt-1">
+                <h3 className="text-huge text-2xl md:text-3xl mb-2 group-hover:text-cyan-200 transition-colors">
+                  {step.title}
+                </h3>
+                <p className="text-white/50 leading-relaxed max-w-md">{step.body}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { SITE } from '../siteConfig';
 
 const LINKS = [
   { label: 'Home', to: '/' },
-  { label: 'Selected Work', to: '/work' },
+  { label: 'Work', to: '/work' },
   { label: 'Journal', to: '/journal' },
   { label: 'Contact', to: '/contact' },
 ];
@@ -16,8 +17,8 @@ export const Nav: React.FC = () => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 py-6">
-        <Link to="/" className="text-label tracking-[0.2em]" onClick={() => setOpen(false)}>
-          CRESTLINE
+        <Link to="/" className="text-label tracking-[0.2em] text-mono glow-cyan text-cyan-300" onClick={() => setOpen(false)}>
+          {SITE.shortName}
         </Link>
         <button
           onClick={() => setOpen((v) => !v)}
@@ -38,7 +39,7 @@ export const Nav: React.FC = () => {
             animate={{ clipPath: 'inset(0 0 0% 0)' }}
             exit={{ clipPath: 'inset(0 0 100% 0)' }}
             transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-40 bg-ink grid-lines flex flex-col items-start justify-center px-6 md:px-16 gap-4"
+            className="fixed inset-0 z-40 bg-ink grid-lines scanlines scanlines-animated flex flex-col items-start justify-center px-6 md:px-16 gap-4"
           >
             {LINKS.map((link, i) => (
               <motion.div
@@ -50,8 +51,8 @@ export const Nav: React.FC = () => {
                 <Link
                   to={link.to}
                   onClick={() => setOpen(false)}
-                  className={`text-huge text-5xl md:text-8xl hover:text-white/50 transition-colors ${
-                    location.pathname === link.to ? 'text-white' : 'text-white/70'
+                  className={`text-huge text-5xl md:text-8xl hover:text-cyan-300/70 transition-colors ${
+                    location.pathname === link.to ? 'text-white glow-white' : 'text-white/70'
                   }`}
                 >
                   {link.label}
@@ -62,9 +63,9 @@ export const Nav: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-label text-white/40 mt-8"
+              className="text-label text-mono text-cyan-300/50 mt-8"
             >
-              hello@crestlinewebstudio.com
+              {SITE.email}
             </motion.div>
           </motion.div>
         )}

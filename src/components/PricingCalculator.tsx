@@ -53,8 +53,10 @@ export const PricingCalculator: React.FC = () => {
           <button
             key={key}
             onClick={() => setTier(key)}
-            className={`text-label px-4 py-4 border transition-colors ${
-              tier === key ? 'border-white bg-white text-ink' : 'border-line text-white/60 hover:border-white/40'
+            className={`text-label px-4 py-4 border transition-all hover:scale-[1.03] ${
+              tier === key
+                ? 'border-white bg-white text-ink'
+                : 'border-line text-white/60 hover:border-cyan-400/50 hover:text-cyan-200'
             }`}
           >
             {TIERS[key].label}
@@ -77,10 +79,10 @@ export const PricingCalculator: React.FC = () => {
             <button
               key={extra.key}
               onClick={() => toggleExtra(extra.key)}
-              className={`text-sm px-4 py-2 border transition-colors ${
+              className={`text-sm px-4 py-2 border transition-all hover:scale-[1.03] ${
                 extras.includes(extra.key)
                   ? 'border-white bg-white text-ink'
-                  : 'border-line text-white/50 hover:border-white/40'
+                  : 'border-line text-white/50 hover:border-cyan-400/50 hover:text-cyan-200'
               }`}
             >
               {extra.label} (+${extra.cost})
