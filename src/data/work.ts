@@ -5,40 +5,35 @@ export interface WorkItem {
   blurb: string;
   tag: 'Concept Project';
   accent: string;
+  url: string;
 }
 
-// PLACEHOLDER: swap these for real concept builds as Phase 1 Step 4 sites go live.
 export const WORK: WorkItem[] = [
   {
-    slug: 'ridgeline-roofing',
-    name: 'Ridgeline Roofing',
-    trade: 'Roofing',
-    blurb: 'Storm-response landing page with instant quote request and before/after gallery.',
+    slug: 'armsworthy-tulsa-fencing',
+    name: 'Armsworthy Tulsa Fencing',
+    trade: 'Fencing',
+    blurb: 'Full fence-catalog site with installation and repair service pages, built for fast local-search visibility.',
     tag: 'Concept Project',
-    accent: '#c4622d',
+    accent: '#94a05c',
+    url: 'https://armsworthytulsafencing.pages.dev',
   },
   {
-    slug: 'greenscape-lawn',
-    name: 'Greenscape Lawn Co.',
-    trade: 'Landscaping',
-    blurb: 'Seasonal service menu, recurring-plan signup, and a map of service areas.',
+    slug: 'd-fence-tulsa',
+    name: 'D-Fence of Tulsa',
+    trade: 'Fencing',
+    blurb: 'Competing fence-company build in the same market — same trade, different positioning and layout.',
     tag: 'Concept Project',
-    accent: '#4a7a4e',
+    accent: '#c3c5c9',
+    url: 'https://d-fence.pages.dev',
   },
   {
-    slug: 'northside-hvac',
-    name: 'Northside HVAC',
-    trade: 'HVAC',
-    blurb: 'Emergency-call-first layout with maintenance plan tiers and financing info.',
+    slug: 'nova-cinematic',
+    name: 'Nova',
+    trade: 'Photography',
+    blurb: 'A Portrait in Light & Shadow — mood-driven, image-forward gallery site for a portrait photographer.',
     tag: 'Concept Project',
-    accent: '#2d6fc4',
-  },
-  {
-    slug: 'oakwood-table',
-    name: 'Oakwood Table',
-    trade: 'Restaurant',
-    blurb: 'Menu-forward single page with reservation widget and event booking.',
-    tag: 'Concept Project',
-    accent: '#a8862d',
+    accent: '#c9a24a',
+    url: 'https://nova-cinematic-site.vercel.app',
   },
 ];

@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
     <footer className="border-t border-line px-6 md:px-10">
       <div className="py-16 grid md:grid-cols-3 gap-12">
         <div>
-          <img src="/logo.png" alt={SITE.name} className="w-12 h-12 rounded-full mb-4" />
+          <img src="/logo.png" alt={SITE.name} className="w-12 h-12 rounded-full object-cover mb-4" />
           <p className="text-huge text-3xl mb-3 text-white glow-white">{SITE.name}</p>
           <p className="text-white/40 text-sm max-w-xs">{SITE.tagline}</p>
         </div>
