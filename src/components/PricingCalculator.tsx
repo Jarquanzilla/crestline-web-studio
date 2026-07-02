@@ -1,71 +1,38 @@
 import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 
-type TierKey = 'essential' | 'professional' | 'premium';
+const BUILD_PRICE = 750;
+const DOMAIN_PRICE = 15;
 
-// PLACEHOLDER PRICING — replace with your real Step 11 tier numbers before launch.
-const TIERS: Record<TierKey, { label: string; base: number; monthly: number; includes: string[] }> = {
-  essential: {
-    label: 'Essential',
-    base: 750,
-    monthly: 0,
-    includes: ['Up to 5 pages', '2 rounds of revisions', 'Mobile-first build', 'Launch on your domain'],
-  },
-  professional: {
-    label: 'Professional',
-    base: 1200,
-    monthly: 50,
-    includes: ['Everything in Essential', 'Monthly maintenance + edits', 'Basic SEO setup', 'Priority support'],
-  },
-  premium: {
-    label: 'Premium',
-    base: 2200,
-    monthly: 100,
-    includes: ['Everything in Professional', 'Booking/quote integrations', 'Copywriting pass', 'Analytics dashboard'],
-  },
-};
-
-const EXTRAS = [
-  { key: 'rush', label: 'Rush delivery (under 1 week)', cost: 300 },
-  { key: 'copy', label: 'Full copywriting', cost: 250 },
-  { key: 'chat', label: 'AI chat / FAQ widget', cost: 200 },
+const INCLUDES = [
+  'Up to 5 pages (Home, About, Services, Contact, Portfolio)',
+  '2 rounds of revisions on the initial design',
+  'Basic on-page SEO (titles, meta descriptions, headers)',
+  'Contact form wired to your email',
+  'Hosting on Cloudflare Pages',
 ];
 
+type SupportKey = 'none' | 'standard' | 'premium';
+
+const SUPPORT: Record<SupportKey, { label: string; monthly: number; blurb: string }> = {
+  none: { label: 'None', monthly: 0, blurb: 'Pay for updates as you need them.' },
+  standard: { label: 'Standard', monthly: 50, blurb: '3 hours of design/dev work per month.' },
+  premium: { label: 'Premium', monthly: 75, blurb: '6 hours of design/dev work per month.' },
+};
+
 export const PricingCalculator: React.FC = () => {
-  const [tier, setTier] = useState<TierKey>('professional');
-  const [extras, setExtras] = useState<string[]>([]);
+  const [wantsDomain, setWantsDomain] = useState(true);
+  const [support, setSupport] = useState<SupportKey>('none');
 
-  const toggleExtra = (key: string) => {
-    setExtras((prev) => (prev.includes(key) ? prev.filter((e) => e !== key) : [...prev, key]));
-  };
-
-  const total = useMemo(() => {
-    const extrasCost = EXTRAS.filter((e) => extras.includes(e.key)).reduce((sum, e) => sum + e.cost, 0);
-    return TIERS[tier].base + extrasCost;
-  }, [tier, extras]);
+  const total = useMemo(() => BUILD_PRICE + (wantsDomain ? DOMAIN_PRICE : 0), [wantsDomain]);
 
   return (
     <div className="border border-line p-8 md:p-12 bg-charcoal">
-      <p className="text-label text-white/40 mb-8">Estimate your project</p>
-
-      <div className="grid grid-cols-3 gap-3 mb-10">
-        {(Object.keys(TIERS) as TierKey[]).map((key) => (
-          <button
-            key={key}
-            onClick={() => setTier(key)}
-            className={`text-label px-4 py-4 border transition-all hover:scale-[1.03] ${
-              tier === key
-                ? 'border-white bg-white text-ink'
-                : 'border-line text-white/60 hover:border-moss-400/50 hover:text-moss-200'
-            }`}
-          >
-            {TIERS[key].label}
-          </button>
-        ))}
-      </div>
+      <p className="text-label text-white/40 mb-2">Estimate your project</p>
+      <p className="text-white/30 text-xs mb-8">Website build is a flat rate — no tiers to guess between.</p>
 
       <ul className="space-y-2 mb-10">
-        {TIERS[tier].includes.map((line) => (
+        {INCLUDES.map((line) => (
           <li key={line} className="text-white/60 text-sm flex gap-3">
             <span className="text-white/30">—</span> {line}
           </li>
@@ -73,22 +40,43 @@ export const PricingCalculator: React.FC = () => {
       </ul>
 
       <div className="mb-10">
-        <p className="text-label text-white/40 mb-4">Add-ons</p>
+        <p className="text-label text-white/40 mb-4">Domain</p>
         <div className="flex flex-wrap gap-3">
-          {EXTRAS.map((extra) => (
+          <button
+            onClick={() => setWantsDomain(true)}
+            className={`text-sm px-4 py-3 border text-left transition-all hover:scale-[1.03] ${
+              wantsDomain ? 'border-white bg-white text-ink' : 'border-line text-white/50 hover:border-moss-400/50 hover:text-moss-200'
+            }`}
+          >
+            Register a custom domain for me (+${DOMAIN_PRICE}/yr)
+          </button>
+          <button
+            onClick={() => setWantsDomain(false)}
+            className={`text-sm px-4 py-3 border text-left transition-all hover:scale-[1.03] ${
+              !wantsDomain ? 'border-white bg-white text-ink' : 'border-line text-white/50 hover:border-moss-400/50 hover:text-moss-200'
+            }`}
+          >
+            I'll use a free pages.dev subdomain or my own domain
+          </button>
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <p className="text-label text-white/40 mb-4">Ongoing support (optional)</p>
+        <div className="grid grid-cols-3 gap-3">
+          {(Object.keys(SUPPORT) as SupportKey[]).map((key) => (
             <button
-              key={extra.key}
-              onClick={() => toggleExtra(extra.key)}
-              className={`text-sm px-4 py-2 border transition-all hover:scale-[1.03] ${
-                extras.includes(extra.key)
-                  ? 'border-white bg-white text-ink'
-                  : 'border-line text-white/50 hover:border-moss-400/50 hover:text-moss-200'
+              key={key}
+              onClick={() => setSupport(key)}
+              className={`text-label px-3 py-4 border transition-all hover:scale-[1.03] ${
+                support === key ? 'border-white bg-white text-ink' : 'border-line text-white/60 hover:border-moss-400/50 hover:text-moss-200'
               }`}
             >
-              {extra.label} (+${extra.cost})
+              {SUPPORT[key].label}
             </button>
           ))}
         </div>
+        <p className="text-white/30 text-xs mt-3">{SUPPORT[support].blurb}</p>
       </div>
 
       <div className="hairline mb-8" />
@@ -97,18 +85,18 @@ export const PricingCalculator: React.FC = () => {
         <div>
           <p className="text-label text-white/40 mb-1">Estimated total</p>
           <motion.p
-            key={total}
+            key={`${total}-${support}`}
             initial={{ opacity: 0.4, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-huge text-5xl"
           >
             ${total.toLocaleString()}
-            {TIERS[tier].monthly > 0 && (
-              <span className="text-white/40 text-xl"> + ${TIERS[tier].monthly}/mo</span>
+            {SUPPORT[support].monthly > 0 && (
+              <span className="text-white/40 text-xl"> + ${SUPPORT[support].monthly}/mo</span>
             )}
           </motion.p>
         </div>
-        <p className="text-white/30 text-xs max-w-[160px] text-right">Final quote confirmed on your intake call.</p>
+        <p className="text-white/30 text-xs max-w-[160px] text-right">Payment due in full before work begins.</p>
       </div>
     </div>
   );

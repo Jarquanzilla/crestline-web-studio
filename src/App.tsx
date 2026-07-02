@@ -6,7 +6,7 @@ import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
 import Home from './pages/Home';
 import Work from './pages/Work';
-import Journal from './pages/Journal';
+import About from './pages/About';
 import Contact from './pages/Contact';
 
 const PageTransition: React.FC<{ children: React.ReactNode }> = ({ children }) => (
@@ -31,7 +31,7 @@ export const App: React.FC = () => {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<PageTransition><Home /></PageTransition>} />
           <Route path="/work" element={<PageTransition><Work /></PageTransition>} />
-          <Route path="/journal" element={<PageTransition><Journal /></PageTransition>} />
+          <Route path="/about" element={<PageTransition><About /></PageTransition>} />
           <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
         </Routes>
       </AnimatePresence>

@@ -7,7 +7,6 @@ export const Footer: React.FC = () => {
     <footer className="border-t border-line px-6 md:px-10">
       <div className="py-16 grid md:grid-cols-3 gap-12">
         <div>
-          <img src="/logo.png" alt={SITE.name} className="w-12 h-12 rounded-full object-cover mb-4" />
           <p className="text-huge text-3xl mb-3 text-white glow-white">{SITE.name}</p>
           <p className="text-white/40 text-sm max-w-xs">{SITE.tagline}</p>
         </div>
@@ -20,13 +19,12 @@ export const Footer: React.FC = () => {
                 {SITE.email}
               </a>
             </li>
-            <li>
-              <a href={`tel:${SITE.phone.replace(/[^\d+]/g, '')}`} className="hover:text-moss-300 transition-colors">
-                {SITE.phone}
-              </a>
+            <li className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-moss-300 pulse-glow" />
+              <span className="text-moss-300/80">{SITE.availability}</span>
             </li>
-            <li>{SITE.city} — serving {SITE.serviceArea}</li>
-            <li>Mon–Fri, 9am–5pm CT</li>
+            <li>Serving {SITE.serviceArea}</li>
+            <li>{SITE.responseTime}</li>
           </ul>
         </div>
 
@@ -34,7 +32,7 @@ export const Footer: React.FC = () => {
           <p className="text-label text-moss-300/40 mb-4">Site</p>
           <ul className="flex flex-col gap-2 text-label text-white/50">
             <li><Link to="/work" className="hover:text-moss-300 transition-colors">Work</Link></li>
-            <li><Link to="/journal" className="hover:text-moss-300 transition-colors">Journal</Link></li>
+            <li><Link to="/about" className="hover:text-moss-300 transition-colors">About</Link></li>
             <li><Link to="/contact" className="hover:text-moss-300 transition-colors">Contact</Link></li>
           </ul>
         </div>

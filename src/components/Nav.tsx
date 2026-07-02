@@ -6,7 +6,7 @@ import { SITE } from '../siteConfig';
 const LINKS = [
   { label: 'Home', to: '/' },
   { label: 'Work', to: '/work' },
-  { label: 'Journal', to: '/journal' },
+  { label: 'About', to: '/about' },
   { label: 'Contact', to: '/contact' },
 ];
 
@@ -17,11 +17,8 @@ export const Nav: React.FC = () => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 py-6">
-        <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <img src="/logo.png" alt={SITE.name} className="w-9 h-9 rounded-full object-cover" />
-          <span className="text-label tracking-[0.2em] text-mono glow-moss text-moss-300">
-            {SITE.shortName}
-          </span>
+        <Link to="/" className="text-label tracking-[0.2em] text-mono glow-moss text-moss-300" onClick={() => setOpen(false)}>
+          {SITE.shortName}
         </Link>
         <button
           onClick={() => setOpen((v) => !v)}

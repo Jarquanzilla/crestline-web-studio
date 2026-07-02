@@ -41,7 +41,7 @@ export const TypingHero: React.FC = () => {
         className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0"
       >
         <span className="text-huge text-white/[0.035] text-[13rem] md:text-[20rem] whitespace-nowrap blur-[1px]">
-          HANDLED
+          {SITE.shortName}
         </span>
       </motion.div>
 
@@ -57,7 +57,7 @@ export const TypingHero: React.FC = () => {
         className="relative z-10 max-w-5xl"
       >
         <p className="text-label text-moss-300/50 mb-6 text-mono">
-          <DecodeText text={`${SITE.shortName} // ${SITE.city.toUpperCase()}`} />
+          <DecodeText text={SITE.shortName} />
         </p>
         <h1 className="text-huge text-6xl md:text-[7.5rem] tracking-tight text-white glow-white">
           <DecodeText text="We build it." frames={14} />
