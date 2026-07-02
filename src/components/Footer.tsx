@@ -7,20 +7,21 @@ export const Footer: React.FC = () => {
     <footer className="border-t border-line px-6 md:px-10">
       <div className="py-16 grid md:grid-cols-3 gap-12">
         <div>
+          <img src="/logo.png" alt={SITE.name} className="w-12 h-12 rounded-full mb-4" />
           <p className="text-huge text-3xl mb-3 text-white glow-white">{SITE.name}</p>
           <p className="text-white/40 text-sm max-w-xs">{SITE.tagline}</p>
         </div>
 
         <div>
-          <p className="text-label text-cyan-300/40 mb-4">Contact</p>
+          <p className="text-label text-moss-300/40 mb-4">Contact</p>
           <ul className="space-y-2 text-white/50 text-sm text-mono">
             <li>
-              <a href={`mailto:${SITE.email}`} className="hover:text-cyan-300 transition-colors">
+              <a href={`mailto:${SITE.email}`} className="hover:text-moss-300 transition-colors">
                 {SITE.email}
               </a>
             </li>
             <li>
-              <a href={`tel:${SITE.phone.replace(/[^\d+]/g, '')}`} className="hover:text-cyan-300 transition-colors">
+              <a href={`tel:${SITE.phone.replace(/[^\d+]/g, '')}`} className="hover:text-moss-300 transition-colors">
                 {SITE.phone}
               </a>
             </li>
@@ -30,11 +31,11 @@ export const Footer: React.FC = () => {
         </div>
 
         <div>
-          <p className="text-label text-cyan-300/40 mb-4">Site</p>
+          <p className="text-label text-moss-300/40 mb-4">Site</p>
           <ul className="flex flex-col gap-2 text-label text-white/50">
-            <li><Link to="/work" className="hover:text-cyan-300 transition-colors">Work</Link></li>
-            <li><Link to="/journal" className="hover:text-cyan-300 transition-colors">Journal</Link></li>
-            <li><Link to="/contact" className="hover:text-cyan-300 transition-colors">Contact</Link></li>
+            <li><Link to="/work" className="hover:text-moss-300 transition-colors">Work</Link></li>
+            <li><Link to="/journal" className="hover:text-moss-300 transition-colors">Journal</Link></li>
+            <li><Link to="/contact" className="hover:text-moss-300 transition-colors">Contact</Link></li>
           </ul>
         </div>
       </div>

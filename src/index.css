@@ -8,8 +8,8 @@
   --ink: #050608;
   --charcoal: #0d1014;
   --paper: #f5f6f8;
-  --cyan: #5eead4;
-  --blue: #38bdf8;
+  --moss: #94a05c;
+  --silver: #c3c5c9;
   --line: rgba(255, 255, 255, 0.08);
   --line-strong: rgba(255, 255, 255, 0.16);
 }
@@ -25,7 +25,7 @@ html, body {
 
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--ink); }
-::-webkit-scrollbar-thumb { background: rgba(94, 234, 212, 0.3); }
+::-webkit-scrollbar-thumb { background: rgba(148, 160, 92, 0.35); }
 
 @layer components {
   .grid-lines {
@@ -90,19 +90,19 @@ html, body {
     text-shadow: 0 0 24px rgba(255, 255, 255, 0.45), 0 0 60px rgba(255, 255, 255, 0.15);
   }
 
-  .glow-cyan {
-    text-shadow: 0 0 16px rgba(94, 234, 212, 0.6), 0 0 40px rgba(94, 234, 212, 0.25);
+  .glow-moss {
+    text-shadow: 0 0 16px rgba(148, 160, 92, 0.65), 0 0 40px rgba(148, 160, 92, 0.3);
   }
 
   .glow-border {
-    border: 1px solid rgba(94, 234, 212, 0.25);
-    box-shadow: 0 0 24px rgba(94, 234, 212, 0.08), inset 0 0 24px rgba(94, 234, 212, 0.04);
+    border: 1px solid rgba(148, 160, 92, 0.3);
+    box-shadow: 0 0 24px rgba(148, 160, 92, 0.1), inset 0 0 24px rgba(148, 160, 92, 0.05);
   }
 
   .scanlines {
     background-image: repeating-linear-gradient(
       0deg,
-      rgba(94, 234, 212, 0.06) 0px,
+      rgba(148, 160, 92, 0.07) 0px,
       transparent 1px,
       transparent 3px
     );
@@ -134,7 +134,7 @@ html, body {
   100% { background-position: 200% center; }
 }
 .shimmer-sweep {
-  background: linear-gradient(90deg, #5eead4 0%, #ffffff 50%, #5eead4 100%);
+  background: linear-gradient(90deg, #b7c17e 0%, #ffffff 50%, #b7c17e 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;

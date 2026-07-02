@@ -17,8 +17,11 @@ export const Nav: React.FC = () => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 py-6">
-        <Link to="/" className="text-label tracking-[0.2em] text-mono glow-cyan text-cyan-300" onClick={() => setOpen(false)}>
-          {SITE.shortName}
+        <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
+          <img src="/logo.png" alt={SITE.name} className="w-9 h-9 rounded-full" />
+          <span className="text-label tracking-[0.2em] text-mono glow-moss text-moss-300">
+            {SITE.shortName}
+          </span>
         </Link>
         <button
           onClick={() => setOpen((v) => !v)}
@@ -51,7 +54,7 @@ export const Nav: React.FC = () => {
                 <Link
                   to={link.to}
                   onClick={() => setOpen(false)}
-                  className={`text-huge text-5xl md:text-8xl hover:text-cyan-300/70 transition-colors ${
+                  className={`text-huge text-5xl md:text-8xl hover:text-moss-300/70 transition-colors ${
                     location.pathname === link.to ? 'text-white glow-white' : 'text-white/70'
                   }`}
                 >
@@ -63,7 +66,7 @@ export const Nav: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
-              className="text-label text-mono text-cyan-300/50 mt-8"
+              className="text-label text-mono text-moss-300/50 mt-8"
             >
               {SITE.email}
             </motion.div>

@@ -57,10 +57,10 @@ export const ServicePillars: React.FC = () => {
   return (
     <section className="py-32 px-6 md:px-10 border-t border-line" style={{ perspective: 1200 }}>
       <div className="mb-16 max-w-2xl">
-        <span className="text-label text-cyan-300/50 text-mono">The Offer</span>
-        <h2 className="text-huge text-4xl md:text-6xl mt-3">Build it. Host it. Forget it.</h2>
+        <span className="text-label text-moss-300/50 text-mono">The Offer</span>
+        <h2 className="text-huge text-4xl md:text-6xl mt-3">Build it. Automate it. Grow it.</h2>
         <p className="text-white/50 mt-4">
-          Four things happen when you work with us — and none of them require you to lift a finger afterward.
+          Every business gets its own playbook — here's what's included no matter which one you need.
         </p>
       </div>
 

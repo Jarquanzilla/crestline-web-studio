@@ -17,11 +17,11 @@ export const Journal: React.FC = () => {
             transition={{ delay: i * 0.06 }}
             className="py-10 grid md:grid-cols-[120px_1fr] gap-6 group cursor-pointer transition-colors hover:bg-white/[0.02] -mx-6 px-6 md:-mx-10 md:px-10"
           >
-            <p className="text-label text-white/30 group-hover:text-cyan-300/50 transition-colors">
+            <p className="text-label text-white/30 group-hover:text-moss-300/50 transition-colors">
               {new Date(post.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
             </p>
             <div>
-              <h2 className="text-huge text-2xl md:text-3xl group-hover:text-cyan-200 group-hover:translate-x-1 transition-all inline-block">
+              <h2 className="text-huge text-2xl md:text-3xl group-hover:text-moss-200 group-hover:translate-x-1 transition-all inline-block">
                 {post.title}
               </h2>
               <p className="text-white/40 mt-2 max-w-xl">{post.excerpt}</p>

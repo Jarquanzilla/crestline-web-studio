@@ -56,17 +56,17 @@ export const TypingHero: React.FC = () => {
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         className="relative z-10 max-w-5xl"
       >
-        <p className="text-label text-cyan-300/50 mb-6 text-mono">
+        <p className="text-label text-moss-300/50 mb-6 text-mono">
           <DecodeText text={`${SITE.shortName} // ${SITE.city.toUpperCase()}`} />
         </p>
         <h1 className="text-huge text-6xl md:text-[7.5rem] tracking-tight text-white glow-white">
           <DecodeText text="We build it." frames={14} />
           <br />
-          <DecodeText text="We host it." delayMs={300} frames={14} />
+          <DecodeText text="We automate it." delayMs={300} frames={14} />
           <br />
-          <span className={`block min-h-[1.15em] glow-cyan ${decoded ? 'shimmer-sweep' : 'text-cyan-300/80'}`}>
+          <span className={`block min-h-[1.15em] glow-moss ${decoded ? 'shimmer-sweep' : 'text-moss-300/80'}`}>
             <DecodeText
-              text="You do nothing."
+              text="You grow."
               delayMs={650}
               frames={26}
               onComplete={() => setDecoded(true)}
@@ -74,12 +74,12 @@ export const TypingHero: React.FC = () => {
           </span>
         </h1>
         <p className="text-white/50 mt-8 max-w-xl text-mono text-sm">
-          Custom-coded sites. Domain and hosting fully managed. One flat price — then it's off your plate for good.
+          Custom-coded sites paired with a strategy built for your business — booking, follow-ups, and traffic systems automated so more visitors turn into customers.
         </p>
         <div className="flex flex-wrap items-center gap-6 mt-10">
           <Link
             to="/work"
-            className="text-label border border-cyan-400/40 px-6 py-3 text-cyan-200 hover:bg-cyan-400/10 hover:border-cyan-300 hover:scale-105 transition-all"
+            className="text-label border border-moss-400/40 px-6 py-3 text-moss-200 hover:bg-moss-400/10 hover:border-moss-300 hover:scale-105 transition-all"
           >
             See the work
           </Link>
@@ -95,7 +95,7 @@ export const TypingHero: React.FC = () => {
           <RisingLine className="w-40 h-16" delay={1.4} />
           <p className="text-mono text-[0.65rem] text-white/30 leading-tight">
             UPTIME<br />
-            <span className="text-cyan-300/60">always on</span>
+            <span className="text-moss-300/60">always on</span>
           </p>
         </div>
       </motion.div>

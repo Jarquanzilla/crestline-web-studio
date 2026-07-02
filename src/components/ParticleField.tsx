@@ -27,13 +27,13 @@ export const ParticleField: React.FC<ParticleFieldProps> = ({ count = 18, classN
       {particles.map((p) => (
         <motion.span
           key={p.id}
-          className="absolute rounded-full bg-cyan-300/70"
+          className="absolute rounded-full bg-moss-300/70"
           style={{
             left: `${p.left}%`,
             top: `${p.top}%`,
             width: p.size,
             height: p.size,
-            boxShadow: '0 0 6px rgba(94,234,212,0.8)',
+            boxShadow: '0 0 6px rgba(183,193,126,0.8)',
           }}
           animate={{
             y: [0, -p.drift, 0],

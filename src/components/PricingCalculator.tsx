@@ -56,7 +56,7 @@ export const PricingCalculator: React.FC = () => {
             className={`text-label px-4 py-4 border transition-all hover:scale-[1.03] ${
               tier === key
                 ? 'border-white bg-white text-ink'
-                : 'border-line text-white/60 hover:border-cyan-400/50 hover:text-cyan-200'
+                : 'border-line text-white/60 hover:border-moss-400/50 hover:text-moss-200'
             }`}
           >
             {TIERS[key].label}
@@ -82,7 +82,7 @@ export const PricingCalculator: React.FC = () => {
               className={`text-sm px-4 py-2 border transition-all hover:scale-[1.03] ${
                 extras.includes(extra.key)
                   ? 'border-white bg-white text-ink'
-                  : 'border-line text-white/50 hover:border-cyan-400/50 hover:text-cyan-200'
+                  : 'border-line text-white/50 hover:border-moss-400/50 hover:text-moss-200'
               }`}
             >
               {extra.label} (+${extra.cost})
