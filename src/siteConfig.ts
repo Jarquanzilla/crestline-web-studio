@@ -4,7 +4,7 @@ export const SITE = {
   shortName: 'NOVALLEM',
   tagline: 'Websites built around a strategy made for your business — automated to sell while you sleep.',
   city: 'Tulsa, OK',
-  email: 'christian@novallem.com',
+  email: 'hello@novallem.com',
   availability: 'Currently booking new projects',
   responseTime: 'Replies within 1 business day',
   serviceArea: 'Tulsa, Bixby, Jenks & Broken Arrow',

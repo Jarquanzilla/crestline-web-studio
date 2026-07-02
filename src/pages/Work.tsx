@@ -27,8 +27,8 @@ export const Work: React.FC = () => {
               className="relative aspect-[21/9] md:aspect-[21/7] flex flex-col justify-end p-8 md:p-12 bg-cover bg-top"
               style={{ backgroundImage: `url(${item.image})` }}
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/20" />
-              <div className="absolute inset-0 bg-ink/30" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/85 to-ink/55" />
+              <div className="absolute inset-0 bg-ink/45" />
               <div className="relative z-10">
                 <span className="text-label text-white/50 mb-2 block">{item.tag} — {item.trade}</span>
                 <h2 className="text-huge text-3xl md:text-5xl mb-3">{item.name}</h2>

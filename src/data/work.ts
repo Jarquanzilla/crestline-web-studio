@@ -25,6 +25,15 @@ export const WORK: WorkItem[] = [
     blurb: 'A second fencing build in a different market — same trade, different town, different positioning and layout.',
     tag: 'Concept Project',
     image: '/work/ofence.jpg',
-    url: 'https://d-fence.pages.dev',
+    url: 'https://repository-host-05.pages.dev',
+  },
+  {
+    slug: 'take-meowt-cat-cafe',
+    name: 'Take Meowt',
+    trade: 'Cat Cafe',
+    blurb: 'Playful, warm-toned booking site for a Tulsa cat cafe — lounge reservations and adoptable-cat gallery.',
+    tag: 'Concept Project',
+    image: '/work/take-meowt.jpg',
+    url: 'https://take-meowt-cat-cafe.pages.dev',
   },
 ];
