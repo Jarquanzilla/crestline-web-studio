@@ -45,4 +45,13 @@ export const WORK: WorkItem[] = [
     image: '/work/whisker-and-bean.jpg',
     url: 'https://whisker-and-bean-cafe.pages.dev',
   },
+  {
+    slug: 'brightline-home-painting',
+    name: 'Brightline Home Painting',
+    trade: 'Painting',
+    blurb: 'Warm, editorial-style site for a residential and commercial painting company — service pages, reviews, and a free-estimate flow.',
+    tag: 'Concept Project',
+    image: '/work/brightline.jpg',
+    url: 'https://brightline-home-painting.pages.dev',
+  },
 ];
