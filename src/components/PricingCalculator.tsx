@@ -1,7 +1,8 @@
 import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 
-const BUILD_PRICE = 750;
+const BUILD_PRICE_ORIGINAL = 750;
+const BUILD_PRICE = 500;
 const DOMAIN_PRICE = 15;
 
 const INCLUDES = [
@@ -25,10 +26,12 @@ export const PricingCalculator: React.FC = () => {
   const [support, setSupport] = useState<SupportKey>('none');
 
   const total = useMemo(() => BUILD_PRICE + (wantsDomain ? DOMAIN_PRICE : 0), [wantsDomain]);
+  const originalTotal = useMemo(() => BUILD_PRICE_ORIGINAL + (wantsDomain ? DOMAIN_PRICE : 0), [wantsDomain]);
 
   return (
     <div className="border border-line p-8 md:p-12 bg-charcoal">
       <p className="text-label text-white/40 mb-2">Estimate your project</p>
+      <p className="text-moss-200 text-xs mb-1">Limited time: ${BUILD_PRICE_ORIGINAL} → ${BUILD_PRICE}</p>
       <p className="text-white/30 text-xs mb-8">Website build is a flat rate — no tiers to guess between.</p>
 
       <ul className="space-y-2 mb-10">
@@ -88,9 +91,10 @@ export const PricingCalculator: React.FC = () => {
             key={`${total}-${support}`}
             initial={{ opacity: 0.4, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-huge text-5xl"
+            className="text-huge text-5xl flex items-baseline gap-3"
           >
-            ${total.toLocaleString()}
+            <span className="text-white/30 line-through text-2xl">${originalTotal.toLocaleString()}</span>
+            <span>${total.toLocaleString()}</span>
             {SUPPORT[support].monthly > 0 && (
               <span className="text-white/40 text-xl"> + ${SUPPORT[support].monthly}/mo</span>
             )}
