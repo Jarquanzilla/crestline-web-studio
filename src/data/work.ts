@@ -10,6 +10,15 @@ export interface WorkItem {
 
 export const WORK: WorkItem[] = [
   {
+    slug: 'crestline-web-studio',
+    name: 'Crestline Web Studio',
+    trade: 'Interior Design',
+    blurb: 'Black-and-white editorial site for a boutique interior design studio — portfolio, service tiers, and a live consultation-request form.',
+    tag: 'Concept Project',
+    image: '/work/crestline.jpg',
+    url: 'https://crestlinewebstudio.com',
+  },
+  {
     slug: 'armsworthy-tulsa-fencing',
     name: 'Armsworthy Tulsa Fencing',
     trade: 'Fencing',
