@@ -28,6 +28,15 @@ export const WORK: WorkItem[] = [
     url: 'https://brightline-home-painting.pages.dev',
   },
   {
+    slug: 'trueline-painting-co',
+    name: 'Trueline Painting Co.',
+    trade: 'Painting',
+    blurb: 'Bilingual (EN/ES) site for an exterior, brick, and interior painting contractor — service overview, a recent-work gallery, client reviews, and a free-estimate flow.',
+    tag: 'Concept Project',
+    image: '/work/trueline.jpg',
+    url: 'https://trueline-painting-demo.pages.dev',
+  },
+  {
     slug: 'armsworthy-tulsa-fencing',
     name: 'Armsworthy Tulsa Fencing',
     trade: 'Fencing',
