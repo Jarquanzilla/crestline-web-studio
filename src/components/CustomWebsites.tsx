@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 const SHOWCASE = [
   { name: 'Crestline Web Studio', trade: 'Interior Design', image: '/work/crestline.jpg', url: 'https://crestlinewebstudio.com' },
   { name: 'Brightline Painting', trade: 'Painting', image: '/work/brightline.jpg', url: 'https://brightline-home-painting.pages.dev' },
-  { name: 'Whisker & Bean', trade: 'Cat Cafe', image: '/work/whisker-and-bean.jpg', url: 'https://whisker-and-bean-cafe.pages.dev' },
 ];
 
 const Frame: React.FC<{ item: (typeof SHOWCASE)[number]; index: number }> = ({ item, index }) => (
@@ -71,7 +70,7 @@ export const CustomWebsites: React.FC = () => {
           </Link>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {SHOWCASE.map((item, i) => (
             <Frame key={item.name} item={item} index={i} />
           ))}

@@ -28,15 +28,6 @@ export const WORK: WorkItem[] = [
     url: 'https://brightline-home-painting.pages.dev',
   },
   {
-    slug: 'trueline-painting-co',
-    name: 'Trueline Painting Co.',
-    trade: 'Painting',
-    blurb: 'Bilingual (EN/ES) site for an exterior, brick, and interior painting contractor — service overview, a recent-work gallery, client reviews, and a free-estimate flow.',
-    tag: 'Concept Project',
-    image: '/work/trueline.jpg',
-    url: 'https://trueline-painting-demo.pages.dev',
-  },
-  {
     slug: 'armsworthy-tulsa-fencing',
     name: 'Armsworthy Tulsa Fencing',
     trade: 'Fencing',
@@ -53,14 +44,5 @@ export const WORK: WorkItem[] = [
     tag: 'Concept Project',
     image: '/work/ofence.jpg',
     url: 'https://repository-host-05.pages.dev',
-  },
-  {
-    slug: 'whisker-and-bean',
-    name: 'Whisker & Bean',
-    trade: 'Cat Cafe',
-    blurb: 'Playful, warm-toned booking site for an Edmond cat cafe — lounge reservations and adoptable-cat gallery.',
-    tag: 'Concept Project',
-    image: '/work/whisker-and-bean.jpg',
-    url: 'https://whisker-and-bean-cafe.pages.dev',
   },
 ];
