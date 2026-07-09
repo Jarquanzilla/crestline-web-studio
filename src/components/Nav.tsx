@@ -17,7 +17,8 @@ export const Nav: React.FC = () => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 py-6">
-        <Link to="/" className="text-label tracking-[0.2em] text-mono glow-moss text-moss-300" onClick={() => setOpen(false)}>
+        <Link to="/" className="flex items-center gap-2.5 text-label tracking-[0.2em] text-mono glow-moss text-moss-300" onClick={() => setOpen(false)}>
+          <img src="/badge.png" alt="Novallem" className="w-8 h-8 rounded-full" />
           {SITE.shortName}
         </Link>
         <button
